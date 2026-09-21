@@ -6,19 +6,18 @@ import type { Campaign, World } from "../types";
 type HomePageProps = {
   worlds: World[];
   campaigns: Campaign[];
+  onOpenWorld: (worldId: string) => void;
+  onOpenCampaign: (campaignId: string) => void;
 };
 
 // The main page of the app. It lists the worlds and the campaigns.
-// TODO: Connect buttons to Tauri commands
-function HomePage({ worlds, campaigns }: HomePageProps) {
-  function handleOpenWorld(worldId: string) {
-    console.log("Open the world:", worldId);
-  }
-
-  function handleOpenCampaign(campaignId: string) {
-    console.log("Open the campaign:", campaignId);
-  }
-
+// TODO: Connect the new buttons to Tauri commands
+function HomePage({
+  worlds,
+  campaigns,
+  onOpenWorld,
+  onOpenCampaign,
+}: HomePageProps) {
   function handleNewWorld() {
     console.log("Make a new world.");
   }
@@ -42,7 +41,7 @@ function HomePage({ worlds, campaigns }: HomePageProps) {
           emptyMessage="You have no worlds yet. Make your first world."
         >
           {worlds.map((world) => (
-            <WorldCard key={world.id} world={world} onOpen={handleOpenWorld} />
+            <WorldCard key={world.id} world={world} onOpen={onOpenWorld} />
           ))}
         </Section>
 
@@ -57,7 +56,7 @@ function HomePage({ worlds, campaigns }: HomePageProps) {
             <CampaignCard
               key={campaign.id}
               campaign={campaign}
-              onOpen={handleOpenCampaign}
+              onOpen={onOpenCampaign}
             />
           ))}
         </Section>

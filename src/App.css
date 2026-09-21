@@ -24,7 +24,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --color-background: #181818;
     --color-surface: #1d1d1d;
@@ -188,4 +188,26 @@ body {
   border-radius: var(--radius);
   color: var(--color-text-dim);
   text-align: center;
+}
+
+/* The title bar of a world page or a campaign page. */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.back-button {
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
